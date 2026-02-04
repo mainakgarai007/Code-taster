@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# React build
+RGB_Control_Website/build/
+RGB_Control_Website/.env.local
+RGB_Control_Website/.env.development.local
+RGB_Control_Website/.env.test.local
+RGB_Control_Website/.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Arduino
+*.hex
+*.elf
+*.bin
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+/tmp/
+
+# OS
+Thumbs.db
+.DS_Store
