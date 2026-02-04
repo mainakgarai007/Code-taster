@@ -209,7 +209,11 @@ void handleButtons() {
   // WiFi button - Hold 3s: switch AP/STA mode
   if (isButtonLongPressed(&btnWifi, 3000)) {
     // Check for safe mode (Power + WiFi hold 5s)
-    if (digitalRead(PIN_BTN_POWER) == LOW && (millis() - btnWifi.pressTime) > 5000) {
+    // Both buttons must be held simultaneously for full duration
+    if (btnPower.currentState == LOW && 
+        btnWifi.currentState == LOW && 
+        (millis() - btnWifi.pressTime) > 5000 &&
+        (millis() - btnPower.pressTime) > 5000) {
       enterSafeMode();
     } else {
       toggleWiFiMode();
@@ -334,6 +338,9 @@ void effectFade() {
 }
 
 void effectBreathe() {
+  // Note: sine calculation is efficient enough on ESP8266
+  // A lookup table would save ~20μs per call but adds 256 bytes of flash
+  // This real-time calculation is acceptable given the 100ms update interval
   uint8_t brightness = (sin((effectStep * 3.14159) / 50.0) * 127.5 + 127.5);
   Color c = colors[state.colorIndex];
   setRGB((c.r * brightness) / 255, (c.g * brightness) / 255, (c.b * brightness) / 255);

@@ -27,15 +27,8 @@ function App() {
     'Solid', 'Fade', 'Breathe', 'Strobe', 'Pulse', 'Rainbow'
   ];
 
-  useEffect(() => {
-    if (deviceIP) {
-      fetchState();
-      const interval = setInterval(fetchState, 2000);
-      return () => clearInterval(interval);
-    }
-  }, [deviceIP]);
-
   const fetchState = async () => {
+    if (!deviceIP) return;
     try {
       const response = await axios.get(`http://${deviceIP}/state`, { timeout: 5000 });
       setState(response.data);
@@ -45,6 +38,15 @@ function App() {
       setConnected(false);
     }
   };
+
+  useEffect(() => {
+    if (deviceIP) {
+      fetchState();
+      const interval = setInterval(fetchState, 2000);
+      return () => clearInterval(interval);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deviceIP]);
 
   const sendCommand = async (command) => {
     try {
