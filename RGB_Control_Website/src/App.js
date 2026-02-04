@@ -205,6 +205,19 @@ function App() {
           </div>
         </div>
 
+        {/* Scenes */}
+        <div className="control-section">
+          <h2>Scenes</h2>
+          <div className="scene-grid">
+            <button className="scene-btn" onClick={() => sendCommand('scene:relax')}>🌅 Relax</button>
+            <button className="scene-btn" onClick={() => sendCommand('scene:party')}>🎉 Party</button>
+            <button className="scene-btn" onClick={() => sendCommand('scene:focus')}>💡 Focus</button>
+            <button className="scene-btn" onClick={() => sendCommand('scene:sleep')}>😴 Sleep</button>
+            <button className="scene-btn" onClick={() => sendCommand('scene:romantic')}>💕 Romantic</button>
+            <button className="scene-btn" onClick={() => sendCommand('scene:energize')}>⚡ Energize</button>
+          </div>
+        </div>
+
         {/* Status Info */}
         <div className="control-section status-info">
           <h2>Device Status</h2>

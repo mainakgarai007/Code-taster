@@ -21,6 +21,7 @@ Complete IoT RGB lighting control system for ESP8266 with React web interface.
 - **WiFi Management**: AP mode for setup, STA mode for operation
 - **Safe Mode**: Recovery mode if WiFi credentials fail
 - **HTTP API**: Full control via REST endpoints
+- **Scene Presets**: 6 pre-configured lighting scenes (Relax, Party, Focus, Sleep, Romantic, Energize)
 
 ## 📋 Hardware Requirements
 
@@ -232,7 +233,21 @@ color:Purple
 color:Pink
 brightness:255
 speed:5
+scene:relax
+scene:party
+scene:focus
+scene:sleep
+scene:romantic
+scene:energize
 ```
+
+**Scene Presets:**
+- **relax**: Yellow breathing effect at low brightness
+- **party**: Rainbow effect at max brightness and high speed
+- **focus**: White solid light at high brightness
+- **sleep**: Blue breathing effect at very low brightness
+- **romantic**: Pink fading effect at medium brightness
+- **energize**: Red pulse effect at max brightness and high speed
 
 **Example with curl:**
 ```bash
@@ -244,6 +259,9 @@ curl -X POST http://192.168.1.100/command -d "color:Blue"
 
 # Set brightness to 50%
 curl -X POST http://192.168.1.100/command -d "brightness:128"
+
+# Activate party scene
+curl -X POST http://192.168.1.100/command -d "scene:party"
 ```
 
 ## 🔊 Buzzer Feedback
@@ -308,6 +326,7 @@ The following settings are saved to EEPROM and restored on boot:
 - **Brightness Control**: 0-100% slider
 - **Speed Control**: Adjust effect animation speed
 - **Quick Actions**: Next color/mode buttons
+- **Scene Presets**: One-click preset lighting scenes
 - **Device Status**: Shows WiFi, IP, mode, and connection status
 - **Responsive Design**: Works on desktop and mobile
 

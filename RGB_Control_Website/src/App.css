@@ -285,6 +285,30 @@
   transform: scale(1.05);
 }
 
+/* Scenes */
+.scene-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.scene-btn {
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.scene-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
 /* Status Info */
 .status-info {
   grid-column: 1 / -1;
@@ -344,7 +368,8 @@
   }
   
   .color-grid,
-  .mode-grid {
+  .mode-grid,
+  .scene-grid {
     grid-template-columns: 1fr;
   }
 }

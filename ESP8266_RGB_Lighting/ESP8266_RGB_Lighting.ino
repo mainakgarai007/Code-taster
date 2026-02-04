@@ -689,10 +689,61 @@ void handleCommand() {
     String value = command.substring(6);
     state.speed = constrain(value.toInt(), 0, 9);
   }
+  else if (command.startsWith("scene:")) {
+    String value = command.substring(6);
+    applyScene(value);
+    beep(100);
+  }
   
   saveState();
   
   server.send(200, "application/json", getStateJSON());
+}
+
+void applyScene(String sceneName) {
+  // Preset scenes for quick access
+  if (sceneName == "relax") {
+    state.powerOn = true;
+    state.colorIndex = 4; // Yellow
+    state.modeIndex = 2;  // Breathe
+    state.brightness = 150;
+    state.speed = 3;
+  }
+  else if (sceneName == "party") {
+    state.powerOn = true;
+    state.modeIndex = 5;  // Rainbow
+    state.brightness = 255;
+    state.speed = 8;
+    state.rainbowMode = true;
+  }
+  else if (sceneName == "focus") {
+    state.powerOn = true;
+    state.colorIndex = 3; // White
+    state.modeIndex = 0;  // Solid
+    state.brightness = 200;
+  }
+  else if (sceneName == "sleep") {
+    state.powerOn = true;
+    state.colorIndex = 2; // Blue
+    state.modeIndex = 2;  // Breathe
+    state.brightness = 50;
+    state.speed = 2;
+  }
+  else if (sceneName == "romantic") {
+    state.powerOn = true;
+    state.colorIndex = 9; // Pink
+    state.modeIndex = 1;  // Fade
+    state.brightness = 100;
+    state.speed = 4;
+  }
+  else if (sceneName == "energize") {
+    state.powerOn = true;
+    state.colorIndex = 0; // Red
+    state.modeIndex = 4;  // Pulse
+    state.brightness = 255;
+    state.speed = 7;
+  }
+  updateLED();
 }
 
 void handleState() {

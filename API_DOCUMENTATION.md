@@ -147,6 +147,26 @@ curl -X POST http://192.168.1.100/command -d "brightness:0"
 curl -X POST http://192.168.1.100/command -d "speed:7"
 ```
 
+### Scene Commands
+
+| Command | Description |
+|---------|-------------|
+| `scene:relax` | Relaxing yellow breathing effect (low brightness) |
+| `scene:party` | Party rainbow effect (high speed, max brightness) |
+| `scene:focus` | Focus white solid light (bright, no effects) |
+| `scene:sleep` | Sleep blue breathing effect (very low brightness) |
+| `scene:romantic` | Romantic pink fading effect (medium brightness) |
+| `scene:energize` | Energizing red pulse effect (fast, max brightness) |
+
+**Examples:**
+```bash
+# Activate party scene
+curl -X POST http://192.168.1.100/command -d "scene:party"
+
+# Activate sleep scene
+curl -X POST http://192.168.1.100/command -d "scene:sleep"
+```
+
 ## Setup Endpoints (AP Mode Only)
 
 ### GET /
